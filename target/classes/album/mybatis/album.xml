@@ -6,5 +6,10 @@
 <!-- album.xml(mapper 화일) -->
 
 <mapper namespace="album.AlbumBean">
-
+	<insert id="InsertAlbum" parameterType="MyAlbum">
+		insert into albums(num,title,singer,price) values(albums_seq.nextval,#{title},#{singer},#{price})
+	</insert>
+	<select id="GetAlbumList" resultType="MyAlbum" >
+		select * from albums order by num asc
+	</select>
 </mapper>

@@ -1,9 +1,19 @@
 package album.model;
 
+import javax.validation.constraints.Min;
+import javax.validation.constraints.Pattern;
+
+import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.NotEmpty;
+
 public class AlbumBean {
+
 	private int num;
+	@NotEmpty(message="제목 입력 누락")
 	private String title;
+	@Length(min=3, max=7, message="3-7자 이내 입력하세요")
 	private String singer;
+	@Min(value=1000, message="최소 1000원 이상 입력하세요")
 	private String price;
 	private String day;
 	
