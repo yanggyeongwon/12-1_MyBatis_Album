@@ -12,4 +12,7 @@
 	<select id="GetAlbumList" resultType="MyAlbum" >
 		select * from albums order by num asc
 	</select>
+	<delete id="DeleteAlbum">
+		delete from albums where num = #{num}
+	</delete>
 </mapper>

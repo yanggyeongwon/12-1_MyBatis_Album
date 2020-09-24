@@ -3,6 +3,8 @@ package album.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -23,6 +25,11 @@ public class AlbumDao {
 		List<AlbumBean> lists = new ArrayList<AlbumBean>();
 		lists = sqlSessionTemplate.selectList("album.AlbumBean.GetAlbumList");
 		return lists;
+	}
+	public void deleteAlbum(int num) {
+		// TODO Auto-generated method stub
+		sqlSessionTemplate.delete("album.AlbumBean.DeleteAlbum", num);
+
 	}
 
 }

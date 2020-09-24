@@ -26,7 +26,7 @@
 			<td>${album.singer }</td>
 			<td>${album.price }</td>
 			<td>${album.day }</td>
-			<td><a href="#">삭제</a></td>
+			<td><a href="delete.ab?num=${album.num }">삭제</a></td>
 			<td><a href="#">수정</a></td>
 		</tr>
 	</c:forEach>
