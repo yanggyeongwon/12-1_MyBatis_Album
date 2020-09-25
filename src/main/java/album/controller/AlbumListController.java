@@ -30,7 +30,8 @@ public class AlbumListController {
 		Map<String,String> map = new HashMap<String, String>();
 		
 		map.put("whatColumn", whatColumn);
-		map.put("keyword", keyword);
+		map.put("keyword", "%"+keyword+"%");
+		
 		
 		List<AlbumBean> lists = albumDao.getAlbumList(map); 
 		
