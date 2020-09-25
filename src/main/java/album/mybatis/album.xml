@@ -25,4 +25,7 @@
 	<update id="updateAlbum" parameterType="MyAlbum">
 		update albums set title=#{title}, singer=#{singer}, price=#{price} where num = #{num}
 	</update>
+	<select id="countAlbum" resultType="int">
+		select count(*) from albums
+	</select>
 </mapper>

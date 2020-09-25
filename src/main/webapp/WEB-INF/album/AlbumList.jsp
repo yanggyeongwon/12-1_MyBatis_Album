@@ -48,7 +48,7 @@
 	</c:forEach>
 	
 	</table>
-	<a href="#">삽입</a>		
+	<a href="insert.ab">삽입</a>		
 
 </body>
 </html>

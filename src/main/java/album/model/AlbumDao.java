@@ -6,9 +6,12 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.ibatis.session.RowBounds;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
+import utility.Paging;
 
 @Component("myAlbumDao")
 public class AlbumDao {
@@ -23,10 +26,16 @@ public class AlbumDao {
 		return cnt;
 	}
 
-	public List<AlbumBean> getAlbumList(Map<String,String> map){
+	public List<AlbumBean> getAlbumList(Map<String,String> map,Paging pageInfo){
 		
 		List<AlbumBean> lists = new ArrayList<AlbumBean>();
-		lists = sqlSessionTemplate.selectList("album.AlbumBean.GetAlbumList", map);
+		RowBounds rowBounds = new RowBounds(pageInfo.getOffset() , pageInfo.getLimit());
+		/*
+		 * offset은 데이터를 가져오는 시작점에서 얼마나 떨어진 데이터인지를 의미하며 limit은 몇 개의 값을 가져올지를 의미한다.
+		 */
+
+		lists = sqlSessionTemplate.selectList("album.AlbumBean.GetAlbumList", map, rowBounds);
+		System.out.println("lists: "+lists);
 		return lists;
 	}
 	public void deleteAlbum(int num) {
@@ -45,6 +54,14 @@ public class AlbumDao {
 		// TODO Auto-generated method stub
 		sqlSessionTemplate.update("album.AlbumBean.updateAlbum", ab);
 	}
+
+	public int getTotalCount() {
+		// TODO Auto-generated method stub
+		int totlCount = sqlSessionTemplate.selectOne("album.AlbumBean.countAlbum");
+		return totlCount;
+	}
+
+
 
 
 }
