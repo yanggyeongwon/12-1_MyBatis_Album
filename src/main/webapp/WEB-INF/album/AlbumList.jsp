@@ -9,6 +9,12 @@
 </head>
 <body>
 앨범 리스트
+<script>
+
+	function goUpdate(num){
+		location.href="update.ab?num="+num;
+	}
+</script>
 	<table border="1">
 		<tr>
 			<td>번호</td>
@@ -27,7 +33,8 @@
 			<td>${album.price }</td>
 			<td>${album.day }</td>
 			<td><a href="delete.ab?num=${album.num }">삭제</a></td>
-			<td><a href="#">수정</a></td>
+			<td><a href="update.ab?num=${album.num }">수정</a></td>
+			<td><input type="button" value="수정" onclick="goUpdate(${album.num})"/>
 		</tr>
 	</c:forEach>
 	

@@ -21,6 +21,7 @@ public class AlbumDao {
 		System.out.println("cnt : "+ cnt);
 		return cnt;
 	}
+
 	public List<AlbumBean> getAlbumList(){
 		List<AlbumBean> lists = new ArrayList<AlbumBean>();
 		lists = sqlSessionTemplate.selectList("album.AlbumBean.GetAlbumList");
@@ -31,5 +32,17 @@ public class AlbumDao {
 		sqlSessionTemplate.delete("album.AlbumBean.DeleteAlbum", num);
 
 	}
+
+	public AlbumBean selectAlbum(int num) {
+		// TODO Auto-generated method stub
+		AlbumBean bean = sqlSessionTemplate.selectOne("album.AlbumBean.selectAlbum", num);
+		return bean;
+	}
+
+	public void updateAlbum(AlbumBean ab) {
+		// TODO Auto-generated method stub
+		int cnt = sqlSessionTemplate.update("album.AlbumBean.updateAlbum", ab);
+	}
+
 
 }

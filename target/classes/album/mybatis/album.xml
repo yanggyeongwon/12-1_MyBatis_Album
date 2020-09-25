@@ -15,4 +15,10 @@
 	<delete id="DeleteAlbum">
 		delete from albums where num = #{num}
 	</delete>
+	<select id="selectAlbum" resultType="MyAlbum"><!-- 파라미터 쓰든지말든지 -->
+		select * from albums where num = #{num}
+	</select>
+	<update id="updateAlbum" parameterType="MyAlbum">
+		update albums set title=#{title}, singer=#{singer}, price=#{price} where num = #{num}
+	</update>
 </mapper>
