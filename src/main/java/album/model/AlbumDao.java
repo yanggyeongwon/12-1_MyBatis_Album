@@ -2,6 +2,7 @@ package album.model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -22,9 +23,10 @@ public class AlbumDao {
 		return cnt;
 	}
 
-	public List<AlbumBean> getAlbumList(){
+	public List<AlbumBean> getAlbumList(Map<String,String> map){
+		
 		List<AlbumBean> lists = new ArrayList<AlbumBean>();
-		lists = sqlSessionTemplate.selectList("album.AlbumBean.GetAlbumList");
+		lists = sqlSessionTemplate.selectList("album.AlbumBean.GetAlbumList", map);
 		return lists;
 	}
 	public void deleteAlbum(int num) {
@@ -41,7 +43,7 @@ public class AlbumDao {
 
 	public void updateAlbum(AlbumBean ab) {
 		// TODO Auto-generated method stub
-		int cnt = sqlSessionTemplate.update("album.AlbumBean.updateAlbum", ab);
+		sqlSessionTemplate.update("album.AlbumBean.updateAlbum", ab);
 	}
 
 

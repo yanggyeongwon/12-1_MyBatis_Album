@@ -10,8 +10,12 @@
 		insert into albums(num,title,singer,price) values(albums_seq.nextval,#{title},#{singer},#{price})
 	</insert>
 	<select id="GetAlbumList" resultType="MyAlbum" >
-		select * from albums order by num asc
+		select * from albums 
+		<if test="whatColumn == 'title'">where title like #{keyword}</if> 
+		<if test="whatColumn == 'singer'">where title like #{keyword}</if> 
+		order by num asc
 	</select>
+
 	<delete id="DeleteAlbum">
 		delete from albums where num = #{num}
 	</delete>

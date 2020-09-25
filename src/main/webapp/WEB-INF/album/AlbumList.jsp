@@ -15,6 +15,15 @@
 		location.href="update.ab?num="+num;
 	}
 </script>
+<form action="list.ab" method="post">
+	<select name="whatColumn">
+		<option value="all">전체검색
+		<option value="title">노래검색
+		<option value="singer">가수검색
+	</select>
+	<input type="text" name="keyword" value="아이유">
+	<input type="submit" value="검색">
+</form>
 	<table border="1">
 		<tr>
 			<td>번호</td>
@@ -40,5 +49,6 @@
 	
 	</table>
 	<a href="#">삽입</a>		
+
 </body>
 </html>

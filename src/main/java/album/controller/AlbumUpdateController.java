@@ -19,8 +19,7 @@ public class AlbumUpdateController {
 	//@Qualifier("myAlbumDao")
 	private AlbumDao albumDao;
 	@RequestMapping(value=command,method = RequestMethod.GET)
-	public ModelAndView doAction(HttpServletRequest request) {
-		
+	public ModelAndView doAction(HttpServletRequest request/* ,Model model */) {
 		int num =Integer.parseInt(request.getParameter("num"));
 
 		AlbumBean ab = albumDao.selectAlbum(num);
@@ -29,6 +28,8 @@ public class AlbumUpdateController {
 		mav.addObject("ab", ab);
 		mav.setViewName(getPage);
 		
+		/* model.addAttribute("ab",ab); */
+		 
 		return mav;
 	}
 	@RequestMapping(value=command,method = RequestMethod.POST)
