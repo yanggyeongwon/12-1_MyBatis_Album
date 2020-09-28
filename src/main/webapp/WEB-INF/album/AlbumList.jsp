@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,7 +9,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-앨범 리스트
+앨범 리스트<br>
+레코드 갯수 : ${totalCount }
 <script>
 
 	function goUpdate(num){
@@ -48,6 +50,7 @@
 	</c:forEach>
 	
 	</table>
+	${pageInfo.pagingHtml }
 	<a href="insert.ab">삽입</a>		
 
 </body>

@@ -55,9 +55,9 @@ public class AlbumDao {
 		sqlSessionTemplate.update("album.AlbumBean.updateAlbum", ab);
 	}
 
-	public int getTotalCount() {
+	public int getTotalCount(Map<String,String> map) {
 		// TODO Auto-generated method stub
-		int totlCount = sqlSessionTemplate.selectOne("album.AlbumBean.countAlbum");
+		int totlCount = sqlSessionTemplate.selectOne("album.AlbumBean.countAlbum", map);
 		return totlCount;
 	}
 

@@ -42,7 +42,7 @@ public class AlbumListController {
 		map.put("whatColumn", whatColumn);
 		map.put("keyword", "%"+keyword+"%");
 		
-		int totalCount = albumDao.getTotalCount();
+		int totalCount = albumDao.getTotalCount(map);
 		
 		Paging pageInfo = new Paging(pageNumber,pageSize,totalCount,url,whatColumn,keyword);
 		
@@ -58,6 +58,8 @@ public class AlbumListController {
 		
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("lists",lists);
+		mav.addObject("pageInfo", pageInfo);
+		mav.addObject("totalCount", totalCount);
 		mav.setViewName(getPage);
 		
 		return mav;
